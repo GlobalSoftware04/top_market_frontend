@@ -9,7 +9,6 @@
   background-color: rgba(255, 255, 255, 0.8);
   width: 33%;
   height: 633px;
-  text-align: center;
 }
 .formLayout .innerForm.innerFormborder {
   border: 1px solid rgba(255, 71, 71, 0.3019607843);
@@ -26,15 +25,15 @@
   letter-spacing: 0;
   margin: 28px;
 }
+.formLayout .innerForm .formBody {
+  text-align: center;
+}
 .formLayout .innerForm .formBody input {
   width: 49.6%;
   height: 56px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 16px;
   font-size: 15px;
-}
-.formLayout .innerForm .formBody input:first-child {
-  margin-bottom: 16px;
 }
 .formLayout .innerForm .formBody input::-moz-placeholder {
   color: rgba(0, 0, 0, 0.2);
@@ -47,6 +46,13 @@
   text-align: center;
   font-size: 14px;
   margin-top: 25px;
+}
+
+.error {
+  margin-bottom: 0;
+  color: red;
+  width: 75%;
+  padding-top: 10px;
 }
 
 .signButton {
@@ -81,6 +87,7 @@ img {
 
 .verifyOtp .verifyOtpBody {
   padding: 40px 0 28px 0;
+  text-align: center;
 }
 .verifyOtp .verifyOtpBody .midBody {
   margin-top: 40px;

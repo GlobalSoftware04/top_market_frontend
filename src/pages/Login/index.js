@@ -1,88 +1,116 @@
 import { useState } from "react";
-import "./style.css";
+import { useForm } from "react-hook-form";
 import { InputOtp } from "primereact/inputotp";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
+import { motion, AnimatePresence } from "framer-motion";
+import "./style.css";
 
 export default function Login() {
-  const [token, setTokens] = useState();
-  const [step, setStep] = useState("signin");
+    const [step, setStep] = useState("signin");
+    const [otpValue, setOtpValue] = useState("");
 
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
-  
+    const onSignInSubmit = (data) => {
+        console.log("Sign In Data:", data);
+        setStep("verify"); // Move to OTP screen
+    };
 
-  return (
-    <div className="formLayout">
-      <div
-        className={`innerForm innerFormborder signIn ${
-          step === "signin" ? "active" : "hidden"
-        }`}
-      >
-        <div className="formHeading">
-          <img src="appIcon.png" alt="icon" />
-          <p>Sign In</p>
-        </div>
-        <div className="formBody">
-          <input
-            className="padding"
-            type="text"
-            id="name"
-            name="email"
-            autoComplete="off"
-            placeholder="Email or Phone number"
-          />
-          <br />
-          <input
-            className="padding"
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Password"
-            autoComplete="new-password" 
-          />
-          <br />
-          <button
-            className="signButton padding marginTopSign"
-            onClick={() => setStep("verify")}
-          >
-            Sign In
-          </button>
-          <br />
-          <p className="forgotP">Forgot Password</p>
-        </div>
-      </div>
+    const onVerifySubmit = () => {
+        console.log("OTP Entered:", otpValue);
+        alert("OTP Verified! 🚀");
+    };
 
-      <div
-        className={`innerForm verifyOtp ${
-          step === "verify" ? "active" : "hidden"
-        }`}
-      >
-        <div className="verifyOtpHeader">
-          <img
-            src="images/backButton.png"
-            alt="back"
-            onClick={() => setStep("signin")}
-            style={{ cursor: "pointer" }}
-          />
-          <img src="images/close.png" style={{ cursor: "pointer" }} alt="close" onClick={() => setStep("signin")} />
+    // Motion variants for subtle fade
+    const fadeVariants = {
+        hidden: { opacity: 0 },
+        visible: { opacity: 1, transition: { duration: 0.25 } },
+        exit: { opacity: 1, transition: { duration: 0.25 } },
+    };
+
+    return (
+        <div className="formLayout">
+            <AnimatePresence mode="wait">
+                {step === "signin" && (
+                    <motion.form
+                        key="signin"
+                        className="innerForm innerFormborder signIn active"
+                        onSubmit={handleSubmit(onSignInSubmit)}
+                        autoComplete="off"
+                        variants={fadeVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                    >
+                        <div className="formHeading">
+                            <img src="appIcon.png" alt="icon" />
+                            <p>Sign In</p>
+                        </div>
+                        <div className="formBody">
+                            <div style={{ marginBottom: 16 }}>
+                                <input
+                                    className="padding"
+                                    type="text"
+                                    placeholder="Email or Phone number"
+                                    {...register("email", { required: "Email / Phone is required" })}
+                                    autoComplete="off"
+                                />
+                                {errors.email && <div className="error">{errors.email.message}</div>}
+                            </div>
+                            <div>
+                                <input
+                                    className="padding"
+                                    type="password"
+                                    placeholder="Password"
+                                    {...register("password", { required: "Password is required" })}
+                                    autoComplete="new-password"
+                                />
+                                {errors.password && <p className="error">{errors.password.message}</p>}
+                            </div>
+                            <button type="submit" className="signButton padding marginTopSign">
+                                Sign In
+                            </button>
+                            <p className="forgotP">Forgot Password</p>
+                        </div>
+                    </motion.form>
+                )}
+
+                {step === "verify" && (
+                    <motion.form
+                        key="verify"
+                        className="innerForm verifyOtp active"
+                        onSubmit={handleSubmit(onVerifySubmit)}
+                        variants={fadeVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                    >
+                        <div className="verifyOtpHeader">
+                            <img
+                                src="images/backButton.png"
+                                alt="back"
+                                onClick={() => setStep("signin")}
+                                style={{ cursor: "pointer" }}
+                            />
+                            <img src="images/close.png" alt="close" />
+                        </div>
+
+                        <div className="verifyOtpBody">
+                            <img src="images/Envelope.png" alt="mail" />
+                            <div className="midBody">
+                                <h5>Check your inbox</h5>
+                                <p>Please open the link in the email to continue or</p>
+                                <p>Enter the verification code we sent to</p>
+                                <InputOtp value={otpValue} onChange={(e) => setOtpValue(e.value)} />
+                                <span className="resendClass">Resend (60s)</span>
+                            </div>
+
+                            <button type="submit" className="signButton padding marginTop">
+                                Verify Code
+                            </button>
+                        </div>
+                    </motion.form>
+                )}
+            </AnimatePresence>
         </div>
-        <div className="verifyOtpBody">
-          <img src="images/Envelope.png" alt="mail" />
-          <div className="midBody">
-            <h5>Check your inbox</h5>
-            <div style={{ textAlign: "center" }}>
-              <p>Please open the link in the email to continue or </p>
-              <p>Enter the verification code we sent to</p>
-              <InputOtp
-                value={token}
-                onChange={(e) => setTokens(e.value)}
-              />
-            </div>
-            <span className="resendClass">Resend (60s)</span>
-          </div>
-          <button className="signButton padding marginTop">Verify Code</button>
-        </div>
-      </div>
-    </div>
-  );
+    );
 }
