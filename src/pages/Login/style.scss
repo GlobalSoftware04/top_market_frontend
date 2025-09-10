@@ -1,0 +1,237 @@
+.formLayout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .innerForm {
+        border-radius: 32px;
+        background-color: #ffffffcc;
+        width: 33%;
+        height: 633px;
+        text-align: center;
+
+        &.innerFormborder {
+            border: 1px solid #ff47474d;
+            padding: 70px 0;
+        }
+
+        .formHeading {
+            text-align: center;
+
+            p {
+                font-family: "inter";
+                font-weight: 600;
+                font-size: 24px;
+                line-height: 32px;
+                letter-spacing: 0;
+                margin: 28px;
+            }
+        }
+
+        .formBody {
+            input {
+                width: 49.6%;
+                height: 56px;
+                border: 1px solid #00000033;
+                border-radius: 16px;
+                font-size: 15px;
+
+                &:first-child {
+                    margin-bottom: 16px;
+                }
+
+                &::placeholder {
+                    color: #00000033;
+                }
+            }
+        }
+
+        .forgotP {
+            color: #f89fa0;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 25px;
+        }
+    }
+}
+
+.signButton {
+    width: 49.6%;
+    height: 60px;
+    min-height: 56px;
+    border-radius: 16px;
+    opacity: 1;
+    font-weight: 300;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 15px;
+}
+
+.verifyOtp {
+    padding: 24px 24px 24px 24px;
+}
+
+.verifyOtpHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+// .signIn {
+//     display: none;
+// }
+
+.padding {
+    padding: 16px 24px;
+}
+
+img {
+    height: 100%;
+}
+
+.verifyOtp {
+    .verifyOtpBody {
+        padding: 40px 0 28px 0;
+        .midBody {
+            margin-top: 40px;
+            h5 {
+                font-weight: 600;
+                font-size: 24px;
+            }
+
+            p {
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0;
+                line-height: 20px;
+                color: #000000;
+            }
+
+            .p-inputotp-input {
+                border-radius: 16px;
+                width: 9%;
+                height: 56px;
+                margin: 28px 0;
+            }
+
+            .p-inputotp {
+                justify-content: center;
+            }
+
+            .resendClass {
+                font-family: Inter;
+                font-size: 14px;
+                line-height: 20px;
+                letter-spacing: 0;
+                text-align: center;
+                color: #00000033;
+            }
+        }
+    }
+}
+
+@media (max-width: 1440px) {
+    .innerForm {
+        .formBody {
+
+            input, .signButton {
+                width: 65.5%!important;
+            }
+        }
+    }
+
+    .verifyOtp .verifyOtpBody .midBody .p-inputotp-input {
+        width: 12%;
+    }
+}
+
+@media(max-width : 1024px) {
+    .formLayout .innerForm {
+        width: 50%;
+    }
+
+}
+
+
+@media(max-width : 768px) {
+    .formLayout .innerForm {
+        width: 75%;
+    }
+
+}
+
+@media(max-width : 425px) {
+    .formLayout .innerForm{
+        height: 533px;
+    }
+
+    .verifyOtp .verifyOtpBody {
+        padding: 28px 0 28px 0;
+
+        img {
+            width: 30px;
+            height: 25px;
+        }
+
+        .midBody {
+            h5 {
+                font-size: 20px;
+                margin-top: 14px;
+            }
+
+            p {
+                font-size: 11px;
+            }
+
+            .p-inputotp-input {
+                margin: 14px 0;
+                height: 40px;
+                width: 18%;
+            }
+        }
+    }
+
+    .padding {
+        padding: 10px 24px;
+    }
+
+    .signButton {
+        height: 36px;
+        font-size: 13px;
+        min-height: 42px;
+    }
+}
+
+
+.marginTopSign{
+    margin-top: 16px;
+}
+
+.marginTop{
+    margin-top: 40px;
+}
+
+
+/* Default hidden state */
+.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  position: absolute;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Active (visible) state */
+.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  position: relative;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Smooth layout handling */
+.formLayout {
+  position: relative;
+}

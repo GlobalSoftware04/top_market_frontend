@@ -1,0 +1,196 @@
+.formLayout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.formLayout .innerForm {
+  border-radius: 32px;
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 33%;
+  height: 633px;
+  text-align: center;
+}
+.formLayout .innerForm.innerFormborder {
+  border: 1px solid rgba(255, 71, 71, 0.3019607843);
+  padding: 70px 0;
+}
+.formLayout .innerForm .formHeading {
+  text-align: center;
+}
+.formLayout .innerForm .formHeading p {
+  font-family: "inter";
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: 0;
+  margin: 28px;
+}
+.formLayout .innerForm .formBody input {
+  width: 49.6%;
+  height: 56px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  font-size: 15px;
+}
+.formLayout .innerForm .formBody input:first-child {
+  margin-bottom: 16px;
+}
+.formLayout .innerForm .formBody input::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.2);
+}
+.formLayout .innerForm .formBody input::placeholder {
+  color: rgba(0, 0, 0, 0.2);
+}
+.formLayout .innerForm .forgotP {
+  color: #f89fa0;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 25px;
+}
+
+.signButton {
+  width: 49.6%;
+  height: 60px;
+  min-height: 56px;
+  border-radius: 16px;
+  opacity: 1;
+  font-weight: 300;
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 15px;
+}
+
+.verifyOtp {
+  padding: 24px 24px 24px 24px;
+}
+
+.verifyOtpHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.padding {
+  padding: 16px 24px;
+}
+
+img {
+  height: 100%;
+}
+
+.verifyOtp .verifyOtpBody {
+  padding: 40px 0 28px 0;
+}
+.verifyOtp .verifyOtpBody .midBody {
+  margin-top: 40px;
+}
+.verifyOtp .verifyOtpBody .midBody h5 {
+  font-weight: 600;
+  font-size: 24px;
+}
+.verifyOtp .verifyOtpBody .midBody p {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 0;
+  line-height: 20px;
+  color: #000000;
+}
+.verifyOtp .verifyOtpBody .midBody .p-inputotp-input {
+  border-radius: 16px;
+  width: 9%;
+  height: 56px;
+  margin: 28px 0;
+}
+.verifyOtp .verifyOtpBody .midBody .p-inputotp {
+  justify-content: center;
+}
+.verifyOtp .verifyOtpBody .midBody .resendClass {
+  font-family: Inter;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 1440px) {
+  .innerForm .formBody input, .innerForm .formBody .signButton {
+    width: 65.5% !important;
+  }
+  .verifyOtp .verifyOtpBody .midBody .p-inputotp-input {
+    width: 12%;
+  }
+}
+@media (max-width: 1024px) {
+  .formLayout .innerForm {
+    width: 50%;
+  }
+}
+@media (max-width: 768px) {
+  .formLayout .innerForm {
+    width: 75%;
+  }
+}
+@media (max-width: 425px) {
+  .formLayout .innerForm {
+    height: 533px;
+  }
+  .verifyOtp .verifyOtpBody {
+    padding: 28px 0 28px 0;
+  }
+  .verifyOtp .verifyOtpBody img {
+    width: 30px;
+    height: 25px;
+  }
+  .verifyOtp .verifyOtpBody .midBody h5 {
+    font-size: 20px;
+    margin-top: 14px;
+  }
+  .verifyOtp .verifyOtpBody .midBody p {
+    font-size: 11px;
+  }
+  .verifyOtp .verifyOtpBody .midBody .p-inputotp-input {
+    margin: 14px 0;
+    height: 40px;
+    width: 18%;
+  }
+  .padding {
+    padding: 10px 24px;
+  }
+  .signButton {
+    height: 36px;
+    font-size: 13px;
+    min-height: 42px;
+  }
+}
+.marginTopSign {
+  margin-top: 16px;
+}
+
+.marginTop {
+  margin-top: 40px;
+}
+
+/* Default hidden state */
+.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  position: absolute;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Active (visible) state */
+.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  position: relative;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Smooth layout handling */
+.formLayout {
+  position: relative;
+}/*# sourceMappingURL=style.css.map */
