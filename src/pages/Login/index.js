@@ -3,11 +3,12 @@ import { useForm } from "react-hook-form";
 import { InputOtp } from "primereact/inputotp";
 import { motion, AnimatePresence } from "framer-motion";
 import "./style.css";
+import { useNavigate, useNavigation } from "react-router-dom";
 
 export default function Login() {
     const [step, setStep] = useState("signin");
     const [otpValue, setOtpValue] = useState("");
-
+    const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSignInSubmit = (data) => {
@@ -16,11 +17,9 @@ export default function Login() {
     };
 
     const onVerifySubmit = () => {
-        console.log("OTP Entered:", otpValue);
-        alert("OTP Verified! 🚀");
+       navigate('/dashboard')
     };
 
-    // Motion variants for subtle fade
     const fadeVariants = {
         hidden: { opacity: 0 },
         visible: { opacity: 1, transition: { duration: 0.25 } },
@@ -42,7 +41,7 @@ export default function Login() {
                         exit="exit"
                     >
                         <div className="formHeading">
-                            <img src="appIcon.png" alt="icon" />
+                            <img src="images/appIcon.svg" alt="icon" />
                             <p>Sign In</p>
                         </div>
                         <div className="formBody">
@@ -86,16 +85,16 @@ export default function Login() {
                     >
                         <div className="verifyOtpHeader">
                             <img
-                                src="images/backButton.png"
+                                src="images/backButton.svg"
                                 alt="back"
                                 onClick={() => setStep("signin")}
                                 style={{ cursor: "pointer" }}
                             />
-                            <img src="images/close.png" alt="close" />
+                            <img src="images/close.svg" alt="close" />
                         </div>
 
                         <div className="verifyOtpBody">
-                            <img src="images/Envelope.png" alt="mail" />
+                            <img src="images/Envelope.svg" alt="mail" />
                             <div className="midBody">
                                 <h5>Check your inbox</h5>
                                 <p>Please open the link in the email to continue or</p>
